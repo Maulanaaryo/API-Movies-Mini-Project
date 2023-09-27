@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: #000814;
+        }
+
+        .navbar-text {
+            color: white;
+            font-size: 27px;
+            margin-left: 10px;
+        }
+
+        .navbar-buttons {
+            margin-left: auto;
+        }
+
+        .navbar-buttons .btn {
+            margin-left: 10px;
+        }
+
+        .card {
+            background-color: #000814;
+            margin: 10px;
+            margin-left: 25px;
+        }
+
+        .small-card {
+            width: 17%;
+            max-width: 250px;
+        }
+
+        .card-title {
+            color: white;
+            font-size: 20px;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .list-group-item {
+            background-color: #000814;
+            font-size: 15px;
+        }
+
+        .card-footer {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <span class="navbar-text text-white">Movie.com</span>
+            <div class="navbar-buttons">
+                <a href="/genres" class="btn btn-dark">Genre</a>
+                <a href="/movies/add" class="btn btn-primary">Add Movie</a>
+            </div>
+        </div>
+
+    </nav>
+    <div class="row">
+        <% movies.forEach(movie=> { %>
+            <div class="card small-card">
+                <img src="<%= movie.image %>" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= movie.name %>
+                    </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="color: white;"> <i class="fas fa-calendar"
+                            style="color: #4B5358"></i>
+                        <%= movie.year %>
+                    </li>
+                    <li class="list-group-item" style="color: white;"> <i class="fas fa-star"
+                            style="color: #e9e107"></i>
+                        <%= movie.rating %>/10
+                    </li>
+                </ul>
+                <div class="card-footer">
+                    <a href="/movies/update/<%= movie.id%>" class="btn btn-warning">Update </a>
+                    <a href="/movies/delete/<%= movie.id %>" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

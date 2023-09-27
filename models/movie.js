@@ -9,15 +9,47 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      movie.belongsToMany(models.genre, { through: models.movieGenre });
+      movie.belongsToMany(models.genre, {
+        through: models.movieGenre,
+        foreignKey: "movieId",
+        otherKey: "genreId",
+      });
     }
   }
   movie.init(
     {
-      name: DataTypes.STRING,
-      image: DataTypes.STRING,
-      year: DataTypes.INTEGER,
-      rating: DataTypes.INTEGER,
+      name: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Name can not be empty",
+          },
+        },
+      },
+      image: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            message: "Image can not be empty",
+          },
+        },
+      },
+      year: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: {
+            message: "Year can not be empty",
+          },
+        },
+      },
+      rating: {
+        type: DataTypes.INTEGER,
+        validate: {
+          notEmpty: {
+            message: "Rating can not be empty",
+          },
+        },
+      },
     },
     {
       sequelize,
