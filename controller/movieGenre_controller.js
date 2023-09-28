@@ -4,6 +4,7 @@ class MovieGenreController {
   static async getMovieGenres(req, res) {
     try {
       let result = await movieGenre.findAll({
+        order: [["id", "asc"]],
         include: [movie, genre],
       });
       res.json(result);

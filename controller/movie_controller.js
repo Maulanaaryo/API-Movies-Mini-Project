@@ -3,7 +3,9 @@ const { movie, genre, movieGenres } = require("../models");
 class MovieController {
   static async getMovies(req, res) {
     try {
-      let movies = await movie.findAll();
+      let movies = await movie.findAll({
+        order: [["id", "asc"]],
+      });
       res.render("movie.ejs", { movies });
       // res.json(movies);
     } catch (e) {

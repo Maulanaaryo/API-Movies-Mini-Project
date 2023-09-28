@@ -14,8 +14,6 @@
             overflow-x: hidden;
         }
 
-
-
         .navbar {
             background-color: #000814;
         }
@@ -34,37 +32,32 @@
             margin-left: 10px;
         }
 
-        .card {
-            background-color: #000814;
-            margin: 10px;
-            margin-left: 25px;
-            width: 25%;
-            max-width: 400px;
-
+        .navbar-center {
+            flex-grow: 1;
+            text-align: center;
         }
 
-        .small-card {
-            height: 160px;
+        .navbar-center-text {
+            color: white;
+            font-size: 35px;
+        }
+
+        .card {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            vertical-align: top;
+            background-color: #4B5358;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: auto;
         }
 
         .card-title {
-            color: white;
-            font-size: 50px;
             text-align: center;
-            margin-top: 20px;
-
-        }
-
-        .card-body {
-            padding: 10px;
-        }
-
-        .card-footer {
-            padding: 5px;
-        }
-
-        .card-link {
-            text-decoration: none;
+            color: white;
         }
     </style>
 </head>
@@ -73,31 +66,30 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <span class="navbar-text text-white">Movie.com</span>
-            <div class="navbar-buttons">
-                <a href="/movies" class="btn btn-dark">Movie</a>
-                <a href="/genres/add" class="btn btn-primary">Add Genre</a>
+            <div class="navbar-center">
+                <span class="navbar-center-text">
+                    <%= MG.name%>
+                </span>
             </div>
         </div>
     </nav>
 
-
-    <div class="row">
-        <% genres.forEach(genre=> { %>
-            <a href="/genres/<%= genre.id %>/movies" class="card-link">
-                <div class="card small-card">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">
-                            <%= genre.name %>
-                        </h5>
-                    </div>
-                    <div class="card-footer">
-                        <a href="/genres/update/<%= genre.id%>" class="btn btn-warning">Update </a>
+    <div class="container">
+        <div class="row">
+            <% MG.movies.forEach(movie=> { %>
+                <div class="col-md-3">
+                    <div class="card mb-3">
+                        <img src="<%= movie.image %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= movie.name %>
+                            </h5>
+                        </div>
                     </div>
                 </div>
-            </a>
-            <% }) %>
+                <% }) %>
+        </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

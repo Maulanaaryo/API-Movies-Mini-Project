@@ -8,6 +8,4 @@ movieRoute.get("/update/:id", movieController.updatePage);
 movieRoute.post("/update/:id", movieController.update);
 movieRoute.get("/delete/:id", movieController.delete);
 
-movieRoute.get("/show", movieController.getShowMovies);
-
 module.exports = movieRoute;
