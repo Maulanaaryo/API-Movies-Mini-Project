@@ -1,8 +1,6 @@
 const route = require("express").Router();
 
 route.get("/", (req, res) => {
-  // res.json({ message: "Welcome to Movies" });
-
   res.render("index.ejs");
 });
 

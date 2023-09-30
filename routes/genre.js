@@ -6,7 +6,7 @@ genreRoute.get("/add", genreController.addPage);
 genreRoute.post("/add", genreController.addGenre);
 genreRoute.get("/update/:id", genreController.updatePage);
 genreRoute.post("/update/:id", genreController.update);
-genreRoute.get("/remove/:id", genreController.delete);
+genreRoute.delete("/delete/:id", genreController.delete);
 genreRoute.get("/:id/movies", genreController.getMovieGenres);
 
 module.exports = genreRoute;

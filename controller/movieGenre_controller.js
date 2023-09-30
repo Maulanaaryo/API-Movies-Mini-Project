@@ -7,14 +7,20 @@ class MovieGenreController {
         order: [["id", "asc"]],
         include: [movie, genre],
       });
-      res.render("movie_genre.ejs", { MG: result });
+
+      const acceptHeader = req.get("Accept");
+      if (acceptHeader && acceptHeader.includes("text/html")) {
+        res.render("moviegenre/movie_genre.ejs", { MG: result });
+      } else {
+        res.json(result);
+      }
     } catch (e) {
       res.json(e);
     }
   }
 
   static addPage(req, res) {
-    res.render("movie_genre_add.ejs");
+    res.render("moviegenre/movie_genre_add.ejs");
   }
 
   static async addMovieGenre(req, res) {
@@ -51,25 +57,7 @@ class MovieGenreController {
 
   // static async update(req, res) {}
 
-  static async delete(req, res) {
-    try {
-      const id = +req.params.id;
-
-      let result = await movieGenre.destroy({
-        where: { id },
-      });
-
-      result === 1
-        ? res.json({
-            message: `ID ${id} has been deleted`,
-          })
-        : res.json({
-            message: `ID ${id} not found`,
-          });
-    } catch (e) {
-      res.json(e);
-    }
-  }
+  // static async delete(req, res) {}
 }
 
 module.exports = MovieGenreController;

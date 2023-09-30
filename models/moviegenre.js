@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   movieGenre.init(
     {
       movieId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
             message: "MovieId can not be empty",
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       genreId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         validate: {
           notEmpty: {
             message: "GenreId can not be empty",
