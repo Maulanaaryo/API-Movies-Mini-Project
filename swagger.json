@@ -2,11 +2,15 @@
   "swagger": "2.0",
   "info": {
     "title": "Movies API",
-    "description": "",
+    "description": "Documentation for Movies API",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
   "host": "localhost:3000",
-  "basePath": "/",
   "schemes": ["http"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
@@ -14,10 +18,10 @@
     "/movies/": {
       "get": {
         "tags": ["Movie"],
-        "description": "",
+        "summary": "Get All Movies",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -25,7 +29,7 @@
     "/movies/add": {
       "post": {
         "tags": ["Movie"],
-        "description": "",
+        "summary": "Add Movie",
         "parameters": [
           {
             "name": "body",
@@ -34,19 +38,19 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "image": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "year": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "rating": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "genreId": {
-                  "example": "any"
+                  "example": "integer"
                 }
               }
             }
@@ -54,7 +58,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -62,13 +66,13 @@
     "/movies/update/{id}": {
       "post": {
         "tags": ["Movie"],
-        "description": "",
+        "summary": "Update Movie",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer"
           },
           {
             "name": "body",
@@ -77,16 +81,19 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "image": {
-                  "example": "any"
+                  "example": "string"
                 },
                 "year": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "rating": {
-                  "example": "any"
+                  "example": "integer"
+                },
+                "genreId": {
+                  "example": "integer"
                 }
               }
             }
@@ -94,7 +101,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -102,18 +109,18 @@
     "/movies/delete/{id}": {
       "get": {
         "tags": ["Movie"],
-        "description": "",
+        "summary": "Delete Movie",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -121,10 +128,10 @@
     "/genres/": {
       "get": {
         "tags": ["Genre"],
-        "description": "",
+        "summary": "Get All Genres",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -132,7 +139,7 @@
     "/genres/add": {
       "post": {
         "tags": ["Genre"],
-        "description": "",
+        "summary": "Add Genre",
         "parameters": [
           {
             "name": "body",
@@ -141,7 +148,7 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -149,7 +156,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -157,13 +164,13 @@
     "/genres/update/{id}": {
       "post": {
         "tags": ["Genre"],
-        "description": "",
+        "summary": "Update Genre",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer"
           },
           {
             "name": "body",
@@ -172,7 +179,7 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "string"
                 }
               }
             }
@@ -180,25 +187,26 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
     },
     "/genres/delete/{id}": {
       "delete": {
-        "description": "",
+        "tags": ["Genre"],
+        "summary": "Delete Genre",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -206,18 +214,18 @@
     "/genres/{id}/movies": {
       "get": {
         "tags": ["Genre"],
-        "description": "",
+        "description": "Get 1 genre according to the movie ",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "integer"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -225,10 +233,10 @@
     "/movieGenres/": {
       "get": {
         "tags": ["MovieGenre"],
-        "description": "",
+        "summary": "Get All ID MovieGenre",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -236,8 +244,14 @@
     "/movieGenres/add": {
       "post": {
         "tags": ["MovieGenre"],
-        "description": "",
+        "summary": "Add ID MovieGenre",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
           {
             "name": "body",
             "in": "body",
@@ -245,10 +259,10 @@
               "type": "object",
               "properties": {
                 "movieId": {
-                  "example": "any"
+                  "example": "integer"
                 },
                 "genreId": {
-                  "example": "any"
+                  "example": "integer"
                 }
               }
             }
@@ -256,25 +270,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/movieGenres/delete/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
