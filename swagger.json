@@ -193,7 +193,7 @@
       }
     },
     "/genres/delete/{id}": {
-      "delete": {
+      "get": {
         "tags": ["Genre"],
         "summary": "Delete Genre",
         "parameters": [

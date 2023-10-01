@@ -32,10 +32,6 @@
 
         }
 
-        .small-card {
-            height: 160px;
-        }
-
         .card-title {
             color: white;
             font-size: 50px;
@@ -48,12 +44,12 @@
             padding: 10px;
         }
 
-        .card-footer {
-            padding: 5px;
-        }
-
         .card-link {
             text-decoration: none;
+        }
+
+        .container {
+            margin-top: 40px;
         }
     </style>
     </head>
@@ -69,21 +65,22 @@
             </div>
         </nav>
 
-
-        <div class="row">
-            <% genres.forEach(genre=> { %>
-                <a href="/genres/<%= genre.id %>/movies" class="card-link">
-                    <div class="card small-card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">
-                                <%= genre.name %>
-                            </h5>
-                        </div>
-                        <div class="card-footer">
-                            <a href="/genres/update/<%= genre.id%>" class="btn btn-warning">Update </a>
-                        </div>
+        <div class="container">
+            <div class="row">
+                <% genres.forEach(genre=> { %>
+                    <div class="col-md-4">
+                        <a href="/genres/<%= genre.id %>/movies" class="card-link">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= genre.name %>
+                                    </h5>
+                                    <a href="/genres/update/<%= genre.id %>" class="btn btn-warning">Update</a>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-                <% }) %>
+                    <% }) %>
+            </div>
         </div>
         <%- include('../footer')%>
